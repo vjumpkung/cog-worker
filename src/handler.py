@@ -54,7 +54,9 @@ def run_inference(inference_request):
     if response.status_code != 200:
         print("Request failed - reason :", response.status_code, response.text)
 
-    return response.json()
+    print(response.text)
+
+    return response.text
 
 
 def handler(event):
@@ -64,7 +66,7 @@ def handler(event):
 
     json = run_inference({"input": event["input"]})
 
-    return json["output"]
+    return json
 
 
 if __name__ == "__main__":
